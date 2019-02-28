@@ -8,7 +8,7 @@ public class DBContract {
     public static final int DB_VERSION = 1;
 
     public static final String TABLE_NAME = "Animals";
-    public static final String COL_ID = "id";
+    public static final String COL_ID = "animalId";
     public static final String COL_TYPE = "type";
     public static final String COL_NAME = "name";
     public static final String COL_SOUND = "sound";
@@ -45,11 +45,5 @@ public class DBContract {
 
     public static String getWhereClauseById() {
         return String.format(Locale.US, "%s = ", COL_ID);
-    }
-
-    // Debugging purposes
-    public static void main(String[] args) {
-        createQuery();
-        System.out.println(getAnimalById(1));
     }
 }

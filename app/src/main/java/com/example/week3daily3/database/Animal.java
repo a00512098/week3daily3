@@ -1,6 +1,9 @@
 package com.example.week3daily3.database;
 
-public class Animal {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Animal implements Parcelable {
     private int id;
     private String type;
     private String name;
@@ -17,6 +20,33 @@ public class Animal {
         this.sound = sound;
         this.imageUrl = imageUrl;
     }
+
+    public Animal(String type, String name, String sound, String imageUrl) {
+        this.type = type;
+        this.name = name;
+        this.sound = sound;
+        this.imageUrl = imageUrl;
+    }
+
+    protected Animal(Parcel in) {
+        id = in.readInt();
+        type = in.readString();
+        name = in.readString();
+        sound = in.readString();
+        imageUrl = in.readString();
+    }
+
+    public static final Creator<Animal> CREATOR = new Creator<Animal>() {
+        @Override
+        public Animal createFromParcel(Parcel in) {
+            return new Animal(in);
+        }
+
+        @Override
+        public Animal[] newArray(int size) {
+            return new Animal[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -52,5 +82,19 @@ public class Animal {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(type);
+        dest.writeString(name);
+        dest.writeString(sound);
+        dest.writeString(imageUrl);
     }
 }

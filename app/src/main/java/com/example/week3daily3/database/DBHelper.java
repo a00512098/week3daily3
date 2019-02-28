@@ -18,6 +18,7 @@ import static com.example.week3daily3.database.DBContract.COL_TYPE;
 import static com.example.week3daily3.database.DBContract.DB_VERSION;
 import static com.example.week3daily3.database.DBContract.TABLE_NAME;
 import static com.example.week3daily3.database.DBContract.createQuery;
+import static com.example.week3daily3.database.DBContract.getWhereClauseById;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -79,8 +80,14 @@ public class DBHelper extends SQLiteOpenHelper {
                 animals.add(new Animal(id, type, name, sound, img));
             } while (cursor.moveToNext());
         }
-
         cursor.close();
         return animals;
+    }
+
+    //delete entry(ies) from the database
+    public long deleteFromDatabaseById(int id) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        return sqLiteDatabase.delete(TABLE_NAME, getWhereClauseById() + id, null);
+
     }
 }
