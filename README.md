@@ -1,6 +1,8 @@
 # Week 3 Daily 3
 
 This app lets the user view a list of animals and add more animals to it.
+When clicking on an animal it shows you the details of the animal.
+And when you swipe that animal, it is deleted from the database.
 
 Main Activity | Create animal | Animal Created | Animal Details | Animal Deleted
 --- | --- | --- | --- | --- 
