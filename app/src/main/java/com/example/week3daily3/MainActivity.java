@@ -42,8 +42,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toast.makeText(this, "onCreate", Toast.LENGTH_SHORT).show();
-
         database = new DBHelper(this);
 
         sharedPreferences = getSharedPreferences(PREFERENCES, MODE_PRIVATE);
