@@ -136,7 +136,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 public void onDismissed(Snackbar transientBottomBar, int event) {
                     super.onDismissed(transientBottomBar, event);
                     // Remove animal from DB
-                    database.deleteFromDatabaseById(deletedAnimal.getId());
+                    if (event != Snackbar.Callback.DISMISS_EVENT_ACTION) {
+                        database.deleteFromDatabaseById(deletedAnimal.getId());
+                    }
                 }
             });
 
